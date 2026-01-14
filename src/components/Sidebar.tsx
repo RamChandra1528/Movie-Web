@@ -1,11 +1,15 @@
 import { Circle, Heart, Bell, ChevronRight, LogOut } from 'lucide-react';
 
+type SidebarView = 'browse' | 'watchlist';
+
 interface SidebarProps {
   selectedCategory?: string;
   onCategorySelect?: (category: string) => void;
+  activeView?: SidebarView;
+  onViewChange?: (view: SidebarView) => void;
 }
 
-export function Sidebar({ selectedCategory, onCategorySelect }: SidebarProps) {
+export function Sidebar({ selectedCategory, onCategorySelect, activeView = 'browse', onViewChange }: SidebarProps) {
   const categories = [
     'Action',
     'Horror',
@@ -31,12 +35,28 @@ export function Sidebar({ selectedCategory, onCategorySelect }: SidebarProps) {
         <div className="mb-6">
           <p className="text-gray-500 text-xs mb-4">New feed</p>
 
-          <button className="flex items-center gap-3 text-white py-3 px-4 rounded-lg bg-card-bg w-full mb-2">
+          <button
+            className={`flex items-center gap-3 py-3 px-4 rounded-lg w-full mb-2 transition-colors ${
+              activeView === 'browse'
+                ? 'bg-card-bg text-white'
+                : 'text-gray-400 hover:bg-card-bg'
+            }`}
+            type="button"
+            onClick={() => onViewChange?.('browse')}
+          >
             <Circle size={20} />
             <span>Browse</span>
           </button>
 
-          <button className="flex items-center gap-3 text-gray-400 py-3 px-4 rounded-lg hover:bg-card-bg w-full mb-2">
+          <button
+            className={`flex items-center gap-3 py-3 px-4 rounded-lg w-full mb-2 transition-colors ${
+              activeView === 'watchlist'
+                ? 'bg-card-bg text-white'
+                : 'text-gray-400 hover:bg-card-bg'
+            }`}
+            type="button"
+            onClick={() => onViewChange?.('watchlist')}
+          >
             <Heart size={20} />
             <span>Watchlist</span>
           </button>

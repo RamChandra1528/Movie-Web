@@ -1,17 +1,33 @@
+import { Heart } from 'lucide-react';
 import { tmdbService } from '../services/tmdb';
 import type { Movie } from '../types/tmdb';
 
 interface MovieCardProps {
   movie: Movie;
   size?: 'small' | 'large';
+  inWatchlist?: boolean;
+  onToggleWatchlist?: (movie: Movie) => void;
 }
 
-export function MovieCard({ movie, size = 'small' }: MovieCardProps) {
+export function MovieCard({ movie, size = 'small', inWatchlist, onToggleWatchlist }: MovieCardProps) {
   const posterUrl = tmdbService.getImageUrl(movie.poster_path, 'w500');
 
   if (size === 'large') {
     return (
       <div className="relative group cursor-pointer flex-shrink-0 w-80 h-48 rounded-2xl overflow-hidden bg-card-muted/80">
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            onToggleWatchlist?.(movie);
+          }}
+          className="absolute top-3 right-3 z-10 p-1.5 rounded-full bg-black/70 hover:bg-black/90"
+        >
+          <Heart
+            size={18}
+            className={inWatchlist ? 'text-red-500 fill-red-500' : 'text-gray-300'}
+          />
+        </button>
         <img
           src={tmdbService.getImageUrl(movie.backdrop_path, 'w780')}
           alt={movie.title}
@@ -27,6 +43,19 @@ export function MovieCard({ movie, size = 'small' }: MovieCardProps) {
 
   return (
     <div className="relative group cursor-pointer flex-shrink-0 w-44 rounded-2xl bg-card-muted/80 p-3">
+      <button
+        type="button"
+        onClick={(e) => {
+          e.stopPropagation();
+          onToggleWatchlist?.(movie);
+        }}
+        className="absolute top-2 right-2 z-10 p-1.5 rounded-full bg-black/70 hover:bg-black/90"
+      >
+        <Heart
+          size={16}
+          className={inWatchlist ? 'text-red-500 fill-red-500' : 'text-gray-300'}
+        />
+      </button>
       <div className="relative rounded-xl overflow-hidden mb-3 h-60">
         <img
           src={posterUrl}
