@@ -9,14 +9,14 @@ export function HeroBanner({ movie }: HeroBannerProps) {
   const backdropUrl = tmdbService.getImageUrl(movie.backdrop_path, 'original');
 
   return (
-    <div className="relative h-96 rounded-3xl overflow-hidden mb-8">
+    <div className="relative h-96 rounded-3xl overflow-hidden mb-8 bg-panel-bg">
       <div className="absolute inset-0">
         <img
           src={backdropUrl}
           alt={movie.title}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover opacity-70"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-app-bg via-app-bg/80 to-transparent" />
       </div>
 
       <div className="relative h-full flex items-center px-12">
@@ -36,7 +36,7 @@ export function HeroBanner({ movie }: HeroBannerProps) {
             <span className="text-gray-400 text-sm">English</span>
           </div>
           <div className="relative inline-flex items-center">
-            <button className="bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-3 rounded-xl transition-colors shadow-[0_0_25px_rgba(248,45,45,0.8)]">
+            <button className="bg-accent-red hover:bg-red-600 text-white font-semibold px-8 py-3 rounded-xl transition-colors shadow-[0_0_25px_rgba(248,45,45,0.8)]">
               Watch
             </button>
             <div className="flex items-center gap-1 ml-4 mt-7">

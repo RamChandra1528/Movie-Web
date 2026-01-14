@@ -11,7 +11,7 @@ export function MovieCard({ movie, size = 'small' }: MovieCardProps) {
 
   if (size === 'large') {
     return (
-      <div className="relative group cursor-pointer flex-shrink-0 w-80 h-48 rounded-xl overflow-hidden">
+      <div className="relative group cursor-pointer flex-shrink-0 w-80 h-48 rounded-2xl overflow-hidden bg-card-muted/80">
         <img
           src={tmdbService.getImageUrl(movie.backdrop_path, 'w780')}
           alt={movie.title}
@@ -26,8 +26,8 @@ export function MovieCard({ movie, size = 'small' }: MovieCardProps) {
   }
 
   return (
-    <div className="relative group cursor-pointer flex-shrink-0 w-44">
-      <div className="relative rounded-xl overflow-hidden mb-3 h-64">
+    <div className="relative group cursor-pointer flex-shrink-0 w-44 rounded-2xl bg-card-muted/80 p-3">
+      <div className="relative rounded-xl overflow-hidden mb-3 h-60">
         <img
           src={posterUrl}
           alt={movie.title}
