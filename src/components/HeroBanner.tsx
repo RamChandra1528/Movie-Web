@@ -42,7 +42,8 @@ export function HeroBanner({ movie }: HeroBannerProps) {
             <div className="flex items-center gap-1 ml-4 mt-7">
                <span className="w-3 h-3 bg-red-500 rounded-full"></span>
               <span className="w-3 h-3 bg-green-500 rounded-full -ml-2"></span>
-              <span className="w-3 h-3 bg-blue-500 rounded-full -ml-2"></span>
+              <span className="w-3 h-3 bg-blue-500 rounded-full -ml-2
+              "></span>
             </div>
           </div>
         </div>
