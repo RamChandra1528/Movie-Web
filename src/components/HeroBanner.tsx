@@ -35,15 +35,16 @@ export function HeroBanner({ movie }: HeroBannerProps) {
             />
             <span className="text-gray-400 text-sm">English</span>
           </div>
-          <button className="bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-3 rounded-lg flex items-center gap-3 transition-colors">
-            <span>Watch</span>
-            <div className="flex gap-1">
-              <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-              <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-              <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+          <div className="relative inline-flex items-center">
+            <button className="bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-3 rounded-xl transition-colors shadow-[0_0_25px_rgba(248,45,45,0.8)]">
+              Watch
+            </button>
+            <div className="flex items-center gap-1 ml-4 mt-7">
+               <span className="w-3 h-3 bg-red-500 rounded-full"></span>
+              <span className="w-3 h-3 bg-green-500 rounded-full -ml-2"></span>
+              <span className="w-3 h-3 bg-blue-500 rounded-full -ml-2"></span>
             </div>
-          </button>
+          </div>
         </div>
       </div>
     </div>
